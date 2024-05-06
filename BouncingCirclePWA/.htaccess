@@ -1,0 +1,7 @@
+RewriteEngine On
+RewriteCond %{HTTP:X-Forwarded-Proto} !https
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301,NE]
+ExpiresActive On
+ExpiresDefault A5
+Header append Cache-Control must-revalidate
+AddType application/wasm .wasm
